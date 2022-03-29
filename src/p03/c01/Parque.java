@@ -101,7 +101,7 @@ public class Parque implements IParque{
 		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)-1);
 		
 		// Imprimimos el estado del parque
-		imprimirInfo(puerta, "Entrada");
+		imprimirInfo(puerta, "Salida");
 		
 		notifyAll();	
 		
