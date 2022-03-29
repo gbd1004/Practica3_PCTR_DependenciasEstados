@@ -84,10 +84,17 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeSalir(){		// TODO
-		//
-		// TODO
-		//
+		if (contadorPersonasTotales == 0){
+			try{
+				wait();
+			}catch(Exception e){
+				System.out.println(e.getStackTrace());
+			}
+		}
 	}
 
+	public void salirDelParque(){
+
+	}
 
 }
