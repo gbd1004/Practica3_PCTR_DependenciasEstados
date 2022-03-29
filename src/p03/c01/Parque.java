@@ -93,8 +93,10 @@ public class Parque implements IParque{
 		}
 	}
 
-	public void salirDelParque(){
-
+	@Override
+	public void salirDelParque(String puerta) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
