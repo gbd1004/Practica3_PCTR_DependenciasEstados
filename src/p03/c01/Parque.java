@@ -17,7 +17,7 @@ public class Parque implements IParque{
 
 
 	@Override
-	public void entrarAlParque(String puerta) {
+	public synchronized void entrarAlParque(String puerta) {
 		
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
@@ -34,8 +34,7 @@ public class Parque implements IParque{
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
 		
-		// TODO
-		
+		notifyAll();
 		
 		checkInvariante();
 		
@@ -91,7 +90,7 @@ public class Parque implements IParque{
 	}
 
 	@Override
-	public void salirDelParque(String puerta) {
+	public synchronized void salirDelParque(String puerta) {
 		
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
@@ -108,8 +107,7 @@ public class Parque implements IParque{
 		// Imprimimos el estado del parque
 		imprimirInfo(puerta, "Entrada");
 		
-		// TODO
-		
+		notifyAll();	
 		
 		checkInvariante();
 	}
