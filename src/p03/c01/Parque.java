@@ -67,7 +67,7 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeEntrar() {
-		if (contadorPersonasTotales == AFOROMAX){
+		while (contadorPersonasTotales == AFOROMAX){
 			try{
 				wait();
 			}catch(InterruptedException e){
@@ -77,7 +77,7 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeSalir() {
-		if (contadorPersonasTotales == 0) {
+		while(contadorPersonasTotales == 0) {
 			try{
 				wait();
 			}catch(InterruptedException e){
