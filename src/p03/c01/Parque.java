@@ -26,7 +26,7 @@ public class Parque implements IParque{
 			contadoresPersonasPuerta.put(puerta, 0);
 		}
 		
-		// TODO
+		comprobarAntesDeEntrar();
 				
 		
 		// Aumentamos el contador total y el individual
@@ -39,14 +39,9 @@ public class Parque implements IParque{
 		// TODO
 		
 		
-		// TODO
+		checkInvariante();
 		
 	}
-	
-	// 
-	// TODO Método salirDelParque
-	//
-	
 	
 	private void imprimirInfo (String puerta, String movimiento){
 		System.out.println(movimiento + " por puerta " + puerta);
@@ -78,9 +73,13 @@ public class Parque implements IParque{
 	}
 
 	protected void comprobarAntesDeEntrar(){	// TODO
-		//
-		// TODO
-		//
+		if (contadorPersonasTotales == 0){
+			try{
+				wait();
+			}catch(Exception e){
+				System.out.println(e.getStackTrace());
+			}
+		}
 	}
 
 	protected void comprobarAntesDeSalir(){		// TODO
@@ -95,8 +94,26 @@ public class Parque implements IParque{
 
 	@Override
 	public void salirDelParque(String puerta) {
-		// TODO Auto-generated method stub
 		
+		// Si no hay entradas por esa puerta, inicializamos
+		if (contadoresPersonasPuerta.get(puerta) == null){
+			contadoresPersonasPuerta.put(puerta, 0);
+		}
+		
+		comprobarAntesDeSalir();
+				
+		
+		// Aumentamos el contador total y el individual
+		contadorPersonasTotales--;		
+		contadoresPersonasPuerta.put(puerta, contadoresPersonasPuerta.get(puerta)-1);
+		
+		// Imprimimos el estado del parque
+		imprimirInfo(puerta, "Entrada");
+		
+		// TODO
+		
+		
+		checkInvariante();
 	}
 
 }
