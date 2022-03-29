@@ -4,9 +4,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class Parque implements IParque{
-
-
-	// TODO 
+	private static int AFOROMAX = 50;
 	private int contadorPersonasTotales;
 	private Hashtable<String, Integer> contadoresPersonasPuerta;
 	
@@ -19,7 +17,7 @@ public class Parque implements IParque{
 
 
 	@Override
-	public void entrarAlParque(String puerta){		// TODO
+	public void entrarAlParque(String puerta) {
 		
 		// Si no hay entradas por esa puerta, inicializamos
 		if (contadoresPersonasPuerta.get(puerta) == null){
@@ -72,21 +70,21 @@ public class Parque implements IParque{
 		
 	}
 
-	protected void comprobarAntesDeEntrar(){	// TODO
+	protected void comprobarAntesDeEntrar() {
 		if (contadorPersonasTotales == 0){
 			try{
 				wait();
-			}catch(Exception e){
+			}catch(InterruptedException e){
 				System.out.println(e.getStackTrace());
 			}
 		}
 	}
 
-	protected void comprobarAntesDeSalir(){		// TODO
-		if (contadorPersonasTotales == 0){
+	protected void comprobarAntesDeSalir() {
+		if (contadorPersonasTotales == AFOROMAX) {
 			try{
 				wait();
-			}catch(Exception e){
+			}catch(InterruptedException e){
 				System.out.println(e.getStackTrace());
 			}
 		}
